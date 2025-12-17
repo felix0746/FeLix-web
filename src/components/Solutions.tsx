@@ -29,23 +29,23 @@ export default function Solutions() {
     ];
 
     return (
-        <section id="solutions" className="py-24 relative overflow-hidden">
+        <section id="solutions" className="py-16 md:py-24 relative overflow-hidden scroll-mt-24 md:scroll-mt-32">
             {/* Background Decor */}
             <div className="absolute top-1/2 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] -translate-y-1/2" />
 
-            <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
+            <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-16">
                 <div className="md:w-1/2">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6">
                             <span className="text-gradient">自動化互動營銷</span>
                             <br />
                             把流量變名單
                         </h2>
-                        <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                        <p className="text-gray-300 text-base md:text-lg mb-8 leading-relaxed">
                             無論您是美容師、音樂老師或餐廳業者，顧客來訪網站後，
                             最重要的就是「留下聯絡方式」。
                             <br /><br />
@@ -53,10 +53,10 @@ export default function Solutions() {
                             您不需要一直盯著手機回訊息，系統會自動幫您引導顧客完成下一步。
                         </p>
 
-                        <ul className="space-y-4">
+                        <ul className="space-y-3 md:space-y-4">
                             {features.map((item, i) => (
-                                <li key={i} className="flex items-center gap-3 text-lg text-gray-300">
-                                    <CheckCircle2 className="text-primary w-6 h-6 shrink-0" />
+                                <li key={i} className="flex items-center gap-3 text-base md:text-lg text-gray-300">
+                                    <CheckCircle2 className="text-primary w-5 h-5 md:w-6 md:h-6 shrink-0" />
                                     {item}
                                 </li>
                             ))}

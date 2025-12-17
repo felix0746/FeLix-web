@@ -71,6 +71,10 @@
     border-color: hsl(var(--border));
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -81,7 +85,13 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, hsl(var(--primary)), #a855f7, #db2777);
+  /* 以紫色與藍色為主，避免偏粉紅色調 */
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    #6366f1,
+    #22d3ee
+  );
 }
 
 .glass-panel {

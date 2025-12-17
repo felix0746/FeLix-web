@@ -27,9 +27,11 @@ export default function Hero() {
                         現已開放接案
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-8">
                         網頁設計 X LINE 互動營銷
-                        <span className="block mt-4 text-gradient leading-tight">打造會自動獲客的數位店面</span>
+                        <span className="block mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-5xl text-gradient leading-tight whitespace-nowrap">
+                            打造會自動獲客的數位店面
+                        </span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
@@ -56,7 +58,7 @@ export default function Hero() {
                 </motion.div>
 
                 {/* Floating Icons/Cards for visual interest */}
-                <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {[
                         { icon: Code2, title: "現代化技術", desc: "使用 Next.js & Tailwind 打造" },
                         { icon: Rocket, title: "極致效能", desc: "最佳化的載入速度與 SEO" },
@@ -64,16 +66,24 @@ export default function Hero() {
                     ].map((item, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 + index * 0.1 }}
-                            className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all group"
+                            transition={{ delay: 0.5 + index * 0.08 }}
+                            className="p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all group text-left"
                         >
-                            <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <item.icon className="w-6 h-6 text-purple-300" />
+                            <div className="flex items-center md:items-start gap-4 md:flex-col">
+                                <div className="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-primary/20 flex items-center justify-center mb-0 md:mb-4 group-hover:scale-110 transition-transform">
+                                    <item.icon className="w-5 h-5 md:w-6 md:h-6 text-purple-200" />
+                                </div>
+                                <div>
+                                    <h3 className="text-base md:text-xl font-semibold mb-1 md:mb-2 text-white">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                                        {item.desc}
+                                    </p>
+                                </div>
                             </div>
-                            <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                            <p className="text-muted-foreground">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>

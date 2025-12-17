@@ -51,20 +51,20 @@ export default function Pricing() {
     ];
 
     return (
-        <section id="pricing" className="py-24 relative">
+        <section id="pricing" className="py-16 md:py-24 relative scroll-mt-24 md:scroll-mt-32">
             <div className="container mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                <div className="text-center mb-10 md:mb-16">
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
                         <span className="text-gradient">透明合理的方案價格</span>
                     </h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                         我們提供具競爭力的市場報價，讓您的每一分預算都花在刀口上。
                         <br />
                         <span className="text-sm opacity-60">*實際報價依需求複雜度可能有所調整</span>
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
                     {plans.map((plan, i) => (
                         <motion.div
                             key={i}
@@ -72,7 +72,7 @@ export default function Pricing() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className={`relative p-8 rounded-3xl border flex flex-col ${plan.highlight
+                            className={`relative p-6 md:p-8 rounded-3xl border flex flex-col ${plan.highlight
                                 ? "bg-white/10 border-primary/50 shadow-[0_0_40px_rgba(124,58,237,0.2)]"
                                 : "bg-white/5 border-white/10 hover:bg-white/[0.08]"
                                 } transition-all duration-300`}
@@ -83,26 +83,36 @@ export default function Pricing() {
                                 </div>
                             )}
 
-                            <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                            <div className="text-3xl font-bold text-primary mb-2">
-                                {plan.price} <span className="text-sm text-muted-foreground font-normal">起</span>
+                            <h3 className="text-xl md:text-2xl font-bold mb-2">{plan.name}</h3>
+                            <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
+                                {plan.price} <span className="text-xs md:text-sm text-muted-foreground font-normal">起</span>
                             </div>
-                            <p className="text-gray-400 text-sm mb-8 h-12">
+                            <p className="text-gray-400 text-sm md:text-base mb-6 md:mb-8 min-h-[3rem]">
                                 {plan.description}
                             </p>
 
-                            <ul className="space-y-4 mb-8 flex-grow">
+                            <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8 flex-grow">
                                 {plan.features.map((feature, idx) => (
                                     <li key={idx} className="flex items-start gap-3 text-sm text-gray-300">
-                                        <Check className="w-5 h-5 text-green-400 shrink-0" />
-                                        {feature}
+                                        <Check className="w-4 h-4 md:w-5 md:h-5 text-green-400 shrink-0" />
+                                        <div className="space-y-1">
+                                            <span>{feature}</span>
+                                            {plan.name === "形象展示官網" && feature.includes("整合 LINE/IG 預約按鈕") && (
+                                                <span className="block text-[11px] md:text-xs text-amber-300/90">
+                                                    ⭐ 熱門加購：升級 LINE 預約自動化系統 + NT$ 10,000
+                                                    <span className="block md:inline text-amber-200/80">
+                                                        （含官方帳號建置、圖文選單、自動引導預約）
+                                                    </span>
+                                                </span>
+                                            )}
+                                        </div>
                                     </li>
                                 ))}
                             </ul>
 
                             <a
                                 href="#contact"
-                                className={`w-full py-3 rounded-full font-bold text-center transition-all ${plan.highlight
+                                className={`w-full py-3 rounded-full font-bold text-center text-sm md:text-base transition-all ${plan.highlight
                                     ? "bg-primary hover:bg-primary/90 text-white shadow-lg"
                                     : "bg-white/10 hover:bg-white/20 text-white"
                                     }`}
