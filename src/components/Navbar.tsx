@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,22 +12,19 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+            setScrolled(window.scrollY > 50);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // 鎖住背景捲動（手機展開選單時）
+    // 鎖住背景捲動
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "";
         }
-        return () => {
-            document.body.style.overflow = "";
-        };
     }, [isOpen]);
 
     const navLinks = [
@@ -39,103 +36,113 @@ export default function Navbar() {
     ];
 
     return (
-        <header
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-                scrolled ? "bg-background/80 backdrop-blur-md border-white/10 shadow-lg" : "bg-transparent"
-            )}
-        >
-            <div className="container mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
-                <Link
-                    href="/"
-                    className="text-lg md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 tracking-tight"
+        <>
+            <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 md:pt-6 pointer-events-none">
+                <nav
+                    className={cn(
+                        "flex items-center justify-between transition-all duration-700 ease-in-out pointer-events-auto",
+                        scrolled
+                            ? "w-[95%] md:w-[85%] max-w-5xl bg-[#0b0d13]/80 backdrop-blur-xl border border-white/10 rounded-full px-6 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+                            : "w-full container px-6 py-4 bg-transparent border-transparent"
+                    )}
                 >
-                    FeLix
-                </Link>
-
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-8">
-                    {navLinks.map((link) => (
+                    {/* Logo Area */}
+                    <div className="flex items-center gap-8">
                         <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-sm font-medium text-gray-300 hover:text-white transition-colors hover:scale-105 transform"
+                            href="/"
+                            className="text-xl md:text-2xl font-heading font-black tracking-tighter hover:opacity-80 transition-opacity"
                         >
-                            {link.name}
+                            <span className={scrolled ? "text-white" : "text-gradient-platinum"}>
+                                FeLix
+                            </span>
                         </Link>
-                    ))}
-                    <Link
-                        href="#contact"
-                        className="px-5 py-2 bg-primary hover:bg-primary/90 text-white rounded-full text-sm font-medium transition-all shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]"
+                    </div>
+
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex items-center gap-8">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className="text-[11px] font-bold font-heading text-gray-400 hover:text-white transition-colors tracking-[0.2em] uppercase"
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* CTA Area */}
+                    <div className="hidden md:flex items-center">
+                        <Link
+                            href="#contact"
+                            className={cn(
+                                "group transition-all duration-500 flex items-center gap-2 px-6 py-2.5 rounded-full font-bold tracking-widest uppercase text-[10px]",
+                                scrolled
+                                    ? "btn-premium shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+                                    : "bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-indigo-400/50 hover:shadow-[0_0_20px_rgba(99,102,241,0.2)]"
+                            )}
+                        >
+                            開始合作
+                            <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </div>
+
+                    {/* Mobile Menu Toggle */}
+                    <button
+                        className="md:hidden flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300"
+                        onClick={() => setIsOpen(!isOpen)}
                     >
-                        開始合作
-                    </Link>
+                        {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    </button>
                 </nav>
+            </header>
 
-                {/* Mobile Toggle */}
-                <button
-                    className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white shadow-sm hover:bg-white/10 transition-colors"
-                    onClick={() => setIsOpen(!isOpen)}
-                    aria-label="切換主選單"
-                >
-                    {isOpen ? <X /> : <Menu />}
-                </button>
-            </div>
-
-            {/* Mobile Nav */}
+            {/* Mobile Nav Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <>
-                        {/* 背景遮罩 */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
+                            className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-md md:hidden"
                             onClick={() => setIsOpen(false)}
                         />
-
-                        {/* 浮動導覽卡片 */}
                         <motion.nav
-                            initial={{ opacity: 0, y: -8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -8 }}
-                            transition={{ duration: 0.18 }}
-                            className="fixed inset-x-4 top-20 z-50 md:hidden"
+                            initial={{ opacity: 0, x: 100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 100 }}
+                            className="fixed inset-y-0 right-0 z-[70] w-[80%] max-w-sm bg-[#0b0d13] border-l border-white/5 p-10 flex flex-col md:hidden shadow-2xl"
                         >
-                            <div className="rounded-2xl bg-background/95 border border-white/10 shadow-[0_18px_60px_rgba(0,0,0,0.6)] p-4">
-                                <div className="flex items-center justify-between text-[11px] text-gray-400 px-1 pb-2">
-                                    <span>頁面導覽</span>
-                                    <span className="text-gray-500">一頁式網站</span>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    {navLinks.map((link) => (
-                                        <Link
-                                            key={link.name}
-                                            href={link.href}
-                                            className="group rounded-xl px-3 py-2 flex items-center justify-between text-sm font-medium text-gray-200 hover:bg-white/5 hover:text-white transition-colors"
-                                            onClick={() => setIsOpen(false)}
-                                        >
-                                            <span>{link.name}</span>
-                                            <span className="h-1.5 w-1.5 rounded-full bg-white/20 group-hover:bg-primary" />
-                                        </Link>
-                                    ))}
-                                </div>
-
-                                <div className="mt-3 border-t border-white/5 pt-3">
+                            <div className="mb-12">
+                                <span className="text-2xl font-black text-gradient-platinum font-heading tracking-tighter">FeLix</span>
+                            </div>
+                            <div className="flex flex-col gap-8">
+                                {navLinks.map((link, i) => (
                                     <Link
-                                        href="#contact"
-                                        className="w-full inline-flex items-center justify-center rounded-full bg-primary text-white text-sm font-semibold py-2.5 shadow-[0_0_24px_rgba(124,58,237,0.45)] hover:bg-primary/90 transition-colors"
+                                        key={link.name}
+                                        href={link.href}
+                                        className="text-lg font-bold text-gray-400 hover:text-white tracking-widest uppercase flex items-center justify-between group"
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        立即洽詢
+                                        {link.name}
+                                        <ArrowRight className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                                     </Link>
-                                </div>
+                                ))}
+                            </div>
+                            <div className="mt-auto">
+                                <Link
+                                    href="#contact"
+                                    className="btn-premium w-full py-4 rounded-xl flex items-center justify-center gap-2 font-bold uppercase tracking-widest text-xs"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    立即開始 <ArrowRight className="w-4 h-4" />
+                                </Link>
                             </div>
                         </motion.nav>
                     </>
                 )}
             </AnimatePresence>
-        </header>
+        </>
     );
 }

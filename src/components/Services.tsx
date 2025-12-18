@@ -1,36 +1,36 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Layout, ShoppingCart, Smartphone, Search, Database, Layers } from "lucide-react";
+import { Monitor, MessageSquare, Smartphone, ScanSearch, Server } from "lucide-react";
 
 const services = [
     {
-        icon: Layout,
-        title: "形象展示官網",
+        icon: Monitor,
+        title: "形象展示官網", // Brand Website
         description: "針對個人品牌、美容、活動宣傳設計的 RWD 響應式網站。",
         className: "md:col-span-2",
     },
     {
-        icon: ShoppingCart,
-        title: "LINE 自動化整合",
+        icon: MessageSquare,
+        title: "LINE 自動化整合", // LINE Integration (Connection)
         description: "整合官方帳號，實現自動預約、客服與導購功能。",
         className: "md:col-span-1",
     },
     {
         icon: Smartphone,
-        title: "RWD 手機優先設計",
+        title: "RWD 手機優先設計", // RWD (Responsive Frame)
         description: "確保您的顧客在手機上能有最流暢的操作體驗。",
         className: "md:col-span-1",
     },
     {
-        icon: Search,
-        title: "SEO 搜尋曝光",
+        icon: ScanSearch,
+        title: "SEO 搜尋曝光", // SEO (Scanning)
         description: "優化網站架構，讓潛在客戶更容易搜尋到您的服務。",
         className: "md:col-span-2",
     },
     {
-        icon: Database,
-        title: "商業營運系統",
+        icon: Server,
+        title: "商業營運系統", // System (Grid Structure)
         description: "客製化後台、會員管理、業績報表，助您高效營運。",
         className: "md:col-span-3",
     },
@@ -38,39 +38,43 @@ const services = [
 
 export default function Services() {
     return (
-        <section id="services" className="py-16 md:py-24 relative bg-black/40 scroll-mt-24 md:scroll-mt-32">
+        <section id="services" className="py-24 md:py-32 relative overflow-hidden">
+            {/* Platinum & Indigo Ambient Glows */}
+            <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
             <div className="container mx-auto px-6">
-                <div className="text-center mb-10 md:mb-16">
-                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
-                        <span className="text-gradient">全方位的開發服務</span>
+                <div className="text-center mb-20">
+                    <h2 className="hero-title-premium text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-white tracking-widest font-heading uppercase">
+                        Our <span className="text-gradient-platinum">Services</span>
                     </h2>
-                    <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                        無論您需要什麼類型的網站，我們都有經驗與技術為您實現。
+                    <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light leading-relaxed tracking-wide">
+                        無論您需要什麼類型的數位產品，我們提供從設計到開發的完整解決方案。
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {services.map((file, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className={`group relative p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all duration-300 overflow-hidden ${file.className}`}
+                            transition={{ delay: i * 0.1, duration: 0.6 }}
+                            className={`glass-panel-premium p-8 rounded-2xl group hover:border-white/20 transition-all duration-500 overflow-hidden ${file.className} relative`}
                         >
-                            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <file.icon className="w-32 h-32 transform group-hover:scale-110 transition-transform duration-500" />
+                            {/* Decorative Background Icon - Blueprint Style */}
+                            <div className="absolute -right-12 -bottom-12 opacity-[0.05] group-hover:opacity-[0.1] transition-all duration-500 pointer-events-none grayscale">
+                                <file.icon className="w-64 h-64 text-white stroke-[0.5] -rotate-12 group-hover:rotate-0 transition-transform duration-700 ease-out" />
                             </div>
 
                             <div className="relative z-10">
-                                <div className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-5 md:mb-6 text-purple-300">
-                                    <file.icon className="w-5 h-5 md:w-6 md:h-6" />
+                                <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6 text-gray-300 group-hover:text-white group-hover:bg-white/10 group-hover:scale-110 transition-all duration-500">
+                                    <file.icon className="w-6 h-6 stroke-[1.5]" />
                                 </div>
-                                <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-white group-hover:text-purple-300 transition-colors">
+                                <h3 className="text-xl font-normal mb-3 text-gray-100 group-hover:text-white transition-colors tracking-wider uppercase text-sm">
                                     {file.title}
                                 </h3>
-                                <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                                <p className="text-gray-500 text-sm leading-relaxed font-light">
                                     {file.description}
                                 </p>
                             </div>

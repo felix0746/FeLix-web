@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { Sparkles, MessageCircle, CalendarHeart, BellRing } from "lucide-react";
 
 export default function Solutions() {
     const features = [
@@ -15,49 +15,55 @@ export default function Solutions() {
 
     const steps = [
         {
-            title: "瀏覽官網，了解品牌與服務",
-            description: "用案例與清楚版面，留下第一個好印象。",
+            icon: BellRing,
+            title: "第一印象，優雅專業",
+            description: "顧客瀏覽精美官網，感受品牌質感。",
         },
         {
-            title: "一鍵加入 LINE 官方帳號",
-            description: "系統自動回覆常見問題與服務資訊，不漏接詢問。",
+            icon: MessageCircle,
+            title: "專屬管家，即時回應",
+            description: "系統自動回覆詢問，就像隨身秘書。",
         },
         {
-            title: "自動完成預約或報名",
-            description: "顧客資料與需求直接進入後台名單，方便後續追蹤。",
+            icon: CalendarHeart,
+            title: "預約確認，貼心提醒",
+            description: "自動完成預約並發送通知，不需人工介入。",
         },
     ];
 
     return (
-        <section id="solutions" className="py-16 md:py-24 relative overflow-hidden scroll-mt-24 md:scroll-mt-32">
-            {/* Background Decor */}
-            <div className="absolute top-1/2 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] -translate-y-1/2" />
+        <section id="solutions" className="py-20 md:py-32 relative overflow-hidden">
+            {/* Background Decor - Elegant Glows */}
+            <div className="absolute top-1/2 left-[-10%] w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
-            <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+            <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6">
-                            <span className="text-gradient">自動化互動營銷</span>
+                        <h2 className="text-3xl md:text-5xl font-extrabold mb-8 text-white tracking-widest font-heading uppercase">
+                            <span className="text-gradient-platinum">Marketing</span>
                             <br />
-                            把流量變名單
+                            Automation
                         </h2>
-                        <p className="text-gray-300 text-base md:text-lg mb-8 leading-relaxed">
-                            無論您是美容師、音樂老師或餐廳業者，顧客來訪網站後，
-                            最重要的就是「留下聯絡方式」。
+                        <p className="text-gray-400 text-lg mb-10 leading-relaxed font-light tracking-wide">
+                            無論您是<span className="text-gray-200 font-medium">美容師</span>、<span className="text-gray-200 font-medium">音樂老師</span>或<span className="text-gray-200 font-medium">個人創作者</span>。
                             <br /><br />
-                            我們透過 LINE 自動化機器人，讓顧客自然而然加入好友、諮詢、預約。
-                            您不需要一直盯著手機回訊息，系統會自動幫您引導顧客完成下一步。
+                            我們為您打造一位 <span className="text-white font-normal underline decoration-white/30 underline-offset-4">24小時待命的數位管家</span>。
+                            讓預約自動成交，把寶貴的時間留給您最熱愛的創作與服務。
                         </p>
 
-                        <ul className="space-y-3 md:space-y-4">
+                        <ul className="space-y-4">
                             {features.map((item, i) => (
-                                <li key={i} className="flex items-center gap-3 text-base md:text-lg text-gray-300">
-                                    <CheckCircle2 className="text-primary w-5 h-5 md:w-6 md:h-6 shrink-0" />
-                                    {item}
+                                <li key={i} className="flex items-center gap-4 text-lg text-gray-300/90 group">
+                                    <div className="p-1.5 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:scale-110 transition-all duration-300">
+                                        <Sparkles className="text-gray-200 w-4 h-4 shrink-0" />
+                                    </div>
+                                    <span className="font-light tracking-wide">{item}</span>
                                 </li>
                             ))}
                         </ul>
@@ -65,52 +71,48 @@ export default function Solutions() {
                 </div>
 
                 <div className="md:w-1/2 w-full">
-                    <div className="relative w-full rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-3xl overflow-hidden">
-                        {/* Abstract visualization or placeholder for code/interface */}
-                        <div className="pointer-events-none absolute inset-0 bg-grid-white/[0.05] [mask-image:linear-gradient(to_bottom_right,white,transparent_70%)]" />
+                    <div className="glass-panel-premium rounded-3xl border border-white/10 overflow-hidden relative shadow-2xl shadow-indigo-500/10">
+                        {/* Soft Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-purple-500/5"></div>
 
-                        {/* Accent glows */}
-                        <div className="pointer-events-none absolute -right-12 -bottom-12 w-40 h-40 rounded-full bg-primary/25 blur-3xl opacity-70" />
-                        <div className="pointer-events-none absolute -left-10 -top-10 w-28 h-28 rounded-full bg-blue-500/20 blur-3xl opacity-60" />
-
-                        <div className="relative p-6 md:p-8 lg:p-10 max-w-xl space-y-6">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-xs font-medium text-primary-foreground/80">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
-                                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                                </span>
-                                顧客體驗流程
+                        <div className="relative p-6 md:p-12 space-y-10">
+                            <div className="flex items-center justify-between">
+                                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-xs font-semibold text-gray-100 tracking-wide uppercase shadow-sm">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
+                                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+                                    </span>
+                                    Assistant Active
+                                </div>
+                                <Sparkles className="w-5 h-5 text-gray-400 opacity-50" />
                             </div>
 
-                            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
-                                從看到網站，到變成你的 LINE 名單
+                            <div className="text-2xl md:text-3xl font-medium text-white tracking-tight leading-snug font-heading">
+                                從陌生訪客，<br />變成您的 <span className="text-gradient-platinum font-bold">忠實顧客</span>
                             </div>
 
-                            <div className="mt-2 space-y-4">
+                            <div className="space-y-6">
                                 {steps.map((step, index) => (
-                                    <div key={index} className="relative flex items-start gap-4 group">
-                                        <div className="relative flex flex-col items-center">
-                                            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 border border-white/20 text-xs font-semibold text-white/80 group-hover:bg-primary/40 group-hover:text-white transition-colors">
-                                                {index + 1}
+                                    <div key={index} className="relative flex items-center gap-6 group p-4 rounded-xl hover:bg-white/5 transition-colors duration-500 border border-transparent hover:border-white/5">
+                                        <div className="relative flex items-center justify-center">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 text-gray-300 group-hover:text-white group-hover:scale-110 transition-all duration-500 shadow-lg">
+                                                <step.icon className="w-5 h-5" />
                                             </div>
+                                            {/* Connecting Line */}
                                             {index < steps.length - 1 && (
-                                                <div className="mt-1 h-8 w-px bg-white/10" />
+                                                <div className="absolute -bottom-8 left-1/2 w-px h-6 bg-gradient-to-b from-white/20 to-transparent"></div>
                                             )}
                                         </div>
-                                        <div className="space-y-1">
-                                            <div className="text-sm md:text-base text-white leading-relaxed">
+                                        <div>
+                                            <div className="text-lg text-gray-200 mb-1 font-medium tracking-wide">
                                                 {step.title}
                                             </div>
-                                            <div className="text-xs md:text-sm text-gray-400 leading-relaxed">
+                                            <div className="text-sm text-gray-500 font-light leading-relaxed">
                                                 {step.description}
                                             </div>
                                         </div>
                                     </div>
                                 ))}
-                            </div>
-
-                            <div className="pt-2 text-xs text-gray-500">
-                                你專心服務顧客，其餘讓系統幫你自動化處理。
                             </div>
                         </div>
                     </div>

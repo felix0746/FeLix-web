@@ -1,44 +1,80 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Mail, MessageSquare } from "lucide-react";
+import { Mail, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
 
 export default function Contact() {
     return (
-        <section id="contact" className="py-16 md:py-24 relative scroll-mt-24 md:scroll-mt-32">
+        <section id="contact" className="py-20 md:py-32 relative scroll-mt-24 md:scroll-mt-32 overflow-hidden">
             <div className="container mx-auto px-6">
-                <div className="rounded-3xl bg-gradient-to-r from-purple-900/50 to-blue-900/50 border border-white/10 p-8 md:p-16 text-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-grid-white/[0.05] opacity-30" />
+                <div className="rounded-[2.5rem] relative overflow-hidden text-center glass-panel-premium p-8 md:p-24 border-white/20 shadow-[0_0_80px_rgba(79,70,229,0.15)]">
+
+                    {/* Platinum & Indigo Ambient Glows - Intensified */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen opacity-50" />
+                    <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-[80px] pointer-events-none" />
+                    <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-[80px] pointer-events-none" />
+
+                    {/* Floating Particles/Sparks */}
+                    <motion.div
+                        animate={{ y: [0, -20, 0], opacity: [0.2, 0.5, 0.2] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                        className="absolute top-20 right-[20%] text-white/20"
+                    >
+                        <Sparkles className="w-6 h-6" />
+                    </motion.div>
+                    <motion.div
+                        animate={{ y: [0, 20, 0], opacity: [0.1, 0.3, 0.1] }}
+                        transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+                        className="absolute bottom-20 left-[15%] text-indigo-400/20"
+                    >
+                        <Sparkles className="w-8 h-8" />
+                    </motion.div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="relative z-10 max-w-2xl mx-auto"
+                        transition={{ duration: 1 }}
+                        className="relative z-10 max-w-3xl mx-auto"
                     >
-                        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 text-white">
-                            準備好開始您的專案了嗎？
+                        <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 tracking-widest font-heading uppercase leading-tight">
+                            <span className="text-gradient-platinum">START YOUR</span>
+                            <br />
+                            <span className="text-gradient-platinum">PROJECT</span>
                         </h2>
-                        <p className="text-base md:text-lg text-gray-300 mb-8 md:mb-10">
-                            無論您有具體的想法，或是還在構思階段，都歡迎與我們聯繫。
-                            讓我們一起討論如何實現您的目標。
+                        <p className="text-lg md:text-xl text-gray-400 mb-14 font-light leading-relaxed max-w-2xl mx-auto">
+                            無論您有具體的想法，或是還在構思階段，都歡迎與我們聯繫。<br className="hidden md:block" />
+                            讓 FeLix 協助您，將創意轉化為帶動業務的數位精品。
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a
-                                href="mailto:contact@felix.com"
-                                className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-colors"
-                            >
-                                <Mail className="w-5 h-5" />
-                                發送 Email
-                            </a>
-                            <a
+                        <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                            {/* Primary CTA - The Brightest Point */}
+                            <div className="relative group">
+                                {/* Button Halo */}
+                                <div className="absolute inset-0 bg-white/20 blur-2xl rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <motion.a
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    href="mailto:contact@felix.com"
+                                    className="relative z-10 btn-premium px-8 md:px-12 py-4 md:py-5 rounded-full font-bold flex items-center justify-center gap-3 text-sm tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(255,255,255,0.2)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all duration-500"
+                                >
+                                    <Mail className="w-5 h-5" />
+                                    立即發送 Email
+                                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                                </motion.a>
+                            </div>
+
+                            {/* Secondary CTA - Matching Platinum/Indigo theme */}
+                            <motion.a
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.98 }}
                                 href="#"
-                                className="flex items-center justify-center gap-2 px-8 py-4 bg-white/10 border border-white/20 text-white rounded-full font-bold hover:bg-white/20 transition-colors"
+                                className="group px-8 md:px-10 py-4 md:py-5 rounded-full font-bold flex items-center justify-center gap-3 text-sm tracking-[0.2em] uppercase border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/5 transition-all duration-500 text-gray-400 hover:text-white"
                             >
-                                <MessageSquare className="w-5 h-5" />
+                                <MessageSquare className="w-5 h-5 text-gray-500 group-hover:text-indigo-400 transition-colors" />
                                 線上諮詢
-                            </a>
+                            </motion.a>
                         </div>
                     </motion.div>
                 </div>

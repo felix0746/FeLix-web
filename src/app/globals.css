@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* 預設為淺色模式 (但在本案中主要使用 Dark Mode) */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 262.1 83.3% 57.8%;
+    --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -30,73 +31,275 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 262.1 83.3% 57.8%;
+    --ring: 222.2 84% 4.9%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* 
+      深邃太空黑 (Deep Space Black)
+      極致純粹的黑，強調對比
+    */
+    --background: 220 10% 4%;
+    --foreground: 210 20% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 10% 6%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 10% 6%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 263.4 70% 50.4%;
-    --primary-foreground: 210 40% 98%;
+    /* 
+      白金 (Platinum) 
+      冷冽、高級的金屬質感
+    */
+    --primary: 210 20% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 10% 10%;
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 10% 10%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 20% 98%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 263.4 70% 50.4%;
+    --border: 220 10% 12%;
+    --input: 220 10% 12%;
+    --ring: 210 20% 90%;
   }
 }
 
 @layer base {
   * {
-    border-color: hsl(var(--border));
-  }
-
-  html {
-    scroll-behavior: smooth;
+    @apply border-border;
   }
 
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-.text-gradient {
+/* 
+  高質感雜訊紋理 
+  保留：這是增加「紙質」或「底片」感的關鍵，讓純色背景不單調
+*/
+.bg-noise::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.02;
+  /* 稍微調低一點，讓黑色更純粹 */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* 
+  流動水銀 (Liquid Mercury) - Dynamic Animation
+  讓銀色漸層像液體一樣流動，增加「活」的感覺
+*/
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}
+
+/* 
+  白金流光漸層 (Platinum Flow) - Liquid Version
+  加入 background-size 和 animation
+*/
+.text-gradient-platinum {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  /* 以紫色與藍色為主，避免偏粉紅色調 */
-  background-image: linear-gradient(
-    to right,
-    hsl(var(--primary)),
-    #6366f1,
-    #22d3ee
-  );
+  background-image: linear-gradient(90deg,
+      #94a3b8 0%,
+      #e2e8f0 25%,
+      #ffffff 50%,
+      #e2e8f0 75%,
+      #94a3b8 100%);
+  background-size: 200% auto;
+  animation: shimmer 8s linear infinite;
+  /* 慢速流動 */
+  filter: drop-shadow(0 0 1em rgba(255, 255, 255, 0.2));
 }
 
-.glass-panel {
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* Backwards compatibility */
+.text-gradient-aurora {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg,
+      #94a3b8 0%,
+      #ffffff 50%,
+      #94a3b8 100%);
+  background-size: 200% auto;
+  animation: shimmer 8s linear infinite;
+  filter: drop-shadow(0 0 1em rgba(255, 255, 255, 0.15));
+}
+
+/* 
+  全像磨砂玻璃 (Holographic Glass) - Liquid Border
+  邊框帶有微弱的流動光澤
+*/
+.glass-panel-premium {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* 稍微亮一點的邊框 */
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 靜態邊框高光 */
+.glass-panel-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.1));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* 懸停時的流動光澤 (Liquid Sheen) - 就像掃描一樣 */
+.glass-panel-premium::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent);
+  transform: skewX(-25deg);
+  transition: .5s;
+  pointer-events: none;
+}
+
+.glass-panel-premium:hover::after {
+  animation: shine 1.5s infinite;
+}
+
+/* 英雄標題 - Silent Luxury Spec */
+.hero-title-premium {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  letter-spacing: 0.1em;
+  /* Wide tracking */
+  font-weight: 300;
+  /* Lighter weight for elegance */
+  text-transform: uppercase;
+  /* ALL CAPS */
+  line-height: 1.1;
+}
+
+.hero-subtitle-premium {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: #94a3b8;
+}
+
+/* 
+  現代流動按鈕 - Monochrome Liquid
+*/
+.btn-premium {
+  position: relative;
+  background: #cbd5e1;
+  /* Fallback */
+  color: #0f172a;
+  border: none;
+  box-shadow:
+    0 10px 20px -5px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  z-index: 1;
+  overflow: hidden;
+  /* Liquid Metal Background */
+  background-image: linear-gradient(90deg,
+      #cbd5e1 0%,
+      #f1f5f9 50%,
+      #cbd5e1 100%);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 15px 30px -5px rgba(255, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  /* Speed up on hover */
+  animation-duration: 2s;
+}
+
+.btn-premium:hover::before {
+  opacity: 1;
+}
+
+.btn-outline-premium {
+  background: transparent;
+  color: #e2e8f0;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-premium:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
 }

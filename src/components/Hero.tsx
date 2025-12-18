@@ -2,88 +2,98 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Code2, Rocket, Globe } from "lucide-react";
+import { ArrowRight, Code2, Rocket, TrendingUp } from "lucide-react";
 
 export default function Hero() {
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/40 via-background to-background" />
-            <div className="absolute top-1/4 -left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-[100px]" />
-            <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
+            {/* Background Texture/Gradient - Subtle & Premium */}
+            <div className="absolute inset-0 bg-background" />
+
+            {/* Platinum & Indigo Ambient Glows */}
+            <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen animate-pulse-slow" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-4xl mx-auto"
+                    transition={{ duration: 1.2, ease: "easeOut" }} // Slower, more elegant
+                    className="max-w-5xl mx-auto"
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-purple-200 mb-8 backdrop-blur-sm">
+                    {/* Status Badge - Minimalist Platinum */}
+                    <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300 mb-10 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.05)]">
                         <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-gray-200"></span>
                         </span>
-                        現已開放接案
+                        <span className="tracking-widest uppercase text-xs font-bold text-gray-300 font-heading">Available for Projects</span>
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-8">
-                        網頁設計 X LINE 互動營銷
-                        <span className="block mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-5xl text-gradient leading-tight whitespace-nowrap">
-                            打造會自動獲客的數位店面
+                    <h1 className="hero-title-premium mb-8 text-white font-heading font-black">
+                        WEB DESIGN <span className="text-gradient-platinum mx-4 font-black">&</span> STRATEGY
+                        <span className="block mt-4 text-gradient-platinum pb-2 tracking-[0.05em] normal-case font-black">
+                            打造自動獲客的數位店面
                         </span>
                     </h1>
 
-                    <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-                        從精緻的企業形象官網，到全自動的預約報名系統。
-                        我們將流量轉化為實際訂單，適合美容、教學、服務業的最佳數位解決方案。
+                    <p className="hero-subtitle-premium mb-14 max-w-2xl mx-auto leading-relaxed text-slate-400 font-light font-sans tracking-wide">
+                        從精緻的企業形象，到全自動的商業系統。<br className="hidden md:block" />
+                        我們將流量轉化為實際訂單，提供極致的數位解決方案。
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                         <Link
                             href="#pricing"
-                            className="group relative px-8 py-4 bg-primary rounded-full text-white font-semibold shadow-[0_0_40px_rgba(124,58,237,0.4)] hover:shadow-[0_0_60px_rgba(124,58,237,0.6)] transition-all duration-300 hover:scale-105"
+                            className="btn-premium px-10 py-4 rounded-full font-heading font-bold tracking-widest text-xs uppercase min-w-[180px]"
                         >
-                            <span className="flex items-center gap-2">
-                                查看方案價格 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            <span className="flex items-center justify-center gap-2">
+                                查看方案 <ArrowRight className="w-4 h-4" />
                             </span>
                         </Link>
                         <Link
                             href="#services"
-                            className="px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-white font-medium"
+                            className="btn-outline-premium px-10 py-4 rounded-full font-heading font-bold tracking-widest text-xs uppercase min-w-[180px]"
                         >
-                            查看服務項目
+                            深入了解
                         </Link>
                     </div>
                 </motion.div>
 
-                {/* Floating Icons/Cards for visual interest */}
-                <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+                {/* Features - Platinum Tech Cards */}
+                <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {[
-                        { icon: Code2, title: "現代化技術", desc: "使用 Next.js & Tailwind 打造" },
-                        { icon: Rocket, title: "極致效能", desc: "最佳化的載入速度與 SEO" },
-                        { icon: Globe, title: "RWD 設計", desc: "完美適配所有裝置尺寸" },
+                        { icon: Code2, title: "現代化技術", desc: "Next.js & Tailwind 打造", id: "01" },
+                        { icon: Rocket, title: "極致效能", desc: "最佳化的載入速度", id: "02" },
+                        { icon: TrendingUp, title: "高轉換率佈局", desc: "設計引導訪客採取行動", id: "03" },
                     ].map((item, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 16 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 + index * 0.08 }}
-                            className="p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all group text-left"
+                            transition={{ delay: 0.6 + index * 0.15, duration: 0.8 }}
+                            className="glass-panel-premium p-8 rounded-2xl text-left group relative overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:-translate-y-1"
                         >
-                            <div className="flex items-center md:items-start gap-4 md:flex-col">
-                                <div className="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-primary/20 flex items-center justify-center mb-0 md:mb-4 group-hover:scale-110 transition-transform">
-                                    <item.icon className="w-5 h-5 md:w-6 md:h-6 text-purple-200" />
-                                </div>
-                                <div>
-                                    <h3 className="text-base md:text-xl font-semibold mb-1 md:mb-2 text-white">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                                        {item.desc}
-                                    </p>
-                                </div>
+                            {/* Soft Gradient Blob on Hover */}
+                            <div className="absolute -right-10 -top-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                            {/* Background Index Number - Elegant */}
+                            <div className="absolute top-4 right-6 text-5xl font-bold font-heading text-white/[0.02] select-none group-hover:text-white/[0.06] transition-colors pointer-events-none tracking-tighter">
+                                {item.id}
                             </div>
+
+                            {/* Floating Icon */}
+                            <div className="mb-6 relative z-10 p-3 bg-white/5 w-fit rounded-xl border border-white/5 group-hover:bg-white/10 group-hover:scale-110 transition-all duration-500">
+                                <item.icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors duration-500" />
+                            </div>
+
+                            {/* Text Content */}
+                            <h3 className="text-lg font-heading font-semibold mb-3 text-white tracking-wide relative z-10">
+                                {item.title}
+                            </h3>
+                            <p className="text-sm text-slate-400 font-light leading-relaxed relative z-10 group-hover:text-slate-300 transition-colors">
+                                {item.desc}
+                            </p>
                         </motion.div>
                     ))}
                 </div>

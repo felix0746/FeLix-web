@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
 
 export default function Pricing() {
     const plans = [
@@ -51,74 +51,102 @@ export default function Pricing() {
     ];
 
     return (
-        <section id="pricing" className="py-16 md:py-24 relative scroll-mt-24 md:scroll-mt-32">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-10 md:mb-16">
-                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
-                        <span className="text-gradient">透明合理的方案價格</span>
+        <section id="pricing" className="py-24 md:py-32 relative overflow-hidden">
+            {/* Platinum & Indigo Ambient Glows */}
+            <div className="absolute top-1/2 left-[-10%] w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-0 right-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+
+            <div className="container mx-auto px-6 md:px-8 relative z-10">
+                <div className="text-center mb-20">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-white tracking-widest font-heading uppercase">
+                        Flexible <span className="text-gradient-platinum">Pricing</span>
                     </h2>
-                    <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                    <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light leading-relaxed tracking-wide">
                         我們提供具競爭力的市場報價，讓您的每一分預算都花在刀口上。
-                        <br />
-                        <span className="text-sm opacity-60">*實際報價依需求複雜度可能有所調整</span>
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {plans.map((plan, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className={`relative p-6 md:p-8 rounded-3xl border flex flex-col ${plan.highlight
-                                ? "bg-white/10 border-primary/50 shadow-[0_0_40px_rgba(124,58,237,0.2)]"
-                                : "bg-white/5 border-white/10 hover:bg-white/[0.08]"
-                                } transition-all duration-300`}
+                            transition={{ delay: i * 0.1, duration: 0.6 }}
+                            className={`relative flex flex-col transition-all duration-500 overflow-visible ${plan.highlight
+                                ? "md:scale-110 z-10"
+                                : ""
+                                }`}
                         >
                             {plan.highlight && (
-                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-primary to-purple-600 rounded-full text-xs font-bold text-white shadow-lg">
-                                    最熱門選擇
-                                </div>
+                                <>
+                                    {/* Protagonist Halo - Pulsing Backglow */}
+                                    <div className="absolute inset-0 bg-indigo-500/20 blur-[60px] rounded-full scale-90 opacity-50 animate-pulse-slow -z-10" />
+
+                                    <motion.div
+                                        animate={{ y: [0, -5, 0] }}
+                                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                        className="absolute -top-5 left-1/2 -translate-x-1/2 px-5 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full text-xs font-bold tracking-[0.2em] uppercase shadow-lg shadow-indigo-500/30 z-20 flex items-center gap-2"
+                                    >
+                                        <Sparkles className="w-3.5 h-3.5" />
+                                        Most Popular
+                                    </motion.div>
+                                </>
                             )}
 
-                            <h3 className="text-xl md:text-2xl font-bold mb-2">{plan.name}</h3>
-                            <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
-                                {plan.price} <span className="text-xs md:text-sm text-muted-foreground font-normal">起</span>
-                            </div>
-                            <p className="text-gray-400 text-sm md:text-base mb-6 md:mb-8 min-h-[3rem]">
-                                {plan.description}
-                            </p>
-
-                            <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8 flex-grow">
-                                {plan.features.map((feature, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-sm text-gray-300">
-                                        <Check className="w-4 h-4 md:w-5 md:h-5 text-green-400 shrink-0" />
-                                        <div className="space-y-1">
-                                            <span>{feature}</span>
-                                            {plan.name === "形象展示官網" && feature.includes("整合 LINE/IG 預約按鈕") && (
-                                                <span className="block text-[11px] md:text-xs text-amber-300/90">
-                                                    ⭐ 熱門加購：升級 LINE 預約自動化系統 + NT$ 10,000
-                                                    <span className="block md:inline text-amber-200/80">
-                                                        （含官方帳號建置、圖文選單、自動引導預約）
-                                                    </span>
-                                                </span>
-                                            )}
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <a
-                                href="#contact"
-                                className={`w-full py-3 rounded-full font-bold text-center text-sm md:text-base transition-all ${plan.highlight
-                                    ? "bg-primary hover:bg-primary/90 text-white shadow-lg"
-                                    : "bg-white/10 hover:bg-white/20 text-white"
-                                    }`}
+                            <div className={`h-full p-6 md:p-10 rounded-3xl border flex flex-col transition-all duration-500 ${plan.highlight
+                                ? "glass-panel-premium border-white/20 shadow-[0_20px_50px_rgba(79,70,229,0.2)]"
+                                : "bg-white/[0.03] border-white/5 hover:border-white/10 hover:bg-white/[0.05] text-gray-400"
+                                }`}
                             >
-                                詢問此方案
-                            </a>
+                                <h3 className={`text-xl font-heading mb-3 uppercase tracking-wider ${plan.highlight ? "text-gradient-platinum font-bold" : "text-gray-300 font-medium"}`}>
+                                    {plan.name}
+                                </h3>
+                                <div className={`text-4xl font-heading mb-6 tracking-tight ${plan.highlight ? "text-white font-bold" : "text-gray-200 font-light"}`}>
+                                    {plan.highlight ? (
+                                        <span className="text-gradient-platinum">{plan.price}</span>
+                                    ) : (
+                                        plan.price
+                                    )}
+                                    <span className="text-sm font-normal text-gray-500 ml-1">起</span>
+                                </div>
+                                <p className="text-sm text-gray-400 mb-10 font-light leading-relaxed min-h-[3.5rem]">
+                                    {plan.description}
+                                </p>
+
+                                <ul className="space-y-4 mb-10 flex-grow">
+                                    {plan.features.map((feature, idx) => (
+                                        <li key={idx} className="flex items-start gap-4 text-sm group">
+                                            {plan.highlight ? (
+                                                <div className="p-1 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
+                                                    <Sparkles className="w-3.5 h-3.5 text-indigo-300" />
+                                                </div>
+                                            ) : (
+                                                <Check className="w-5 h-5 shrink-0 text-gray-600" />
+                                            )}
+                                            <div className="space-y-1">
+                                                <span className={`${plan.highlight ? "text-gray-200 font-medium" : "text-gray-400"} tracking-wide`}>{feature}</span>
+                                                {plan.name === "形象展示官網" && feature.includes("整合 LINE/IG 預約按鈕") && (
+                                                    <span className="block text-xs text-indigo-400/80 mt-1 pl-1 border-l-2 border-indigo-400/20 font-light">
+                                                        可升級 LINE 自動化系統
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <a
+                                    href="#contact"
+                                    className={`w-full py-4 rounded-xl font-bold text-center text-sm tracking-widest uppercase transition-all duration-300 ${plan.highlight
+                                        ? "btn-premium shadow-indigo-500/20"
+                                        : "btn-outline-premium"
+                                        }`}
+                                >
+                                    詢詢問此方案
+                                </a>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Outfit, Exo_2 } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
+const exo2 = Exo_2({ subsets: ["latin"], variable: "--font-heading" });
 
 export const metadata: Metadata = {
   title: "FeLix | 專業網站開發與解決方案",
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW" className="dark">
-      <body className={cn(inter.className, "bg-background text-foreground antialiased min-h-screen")}>
+      <body className={cn(outfit.variable, exo2.variable, "font-sans bg-background text-foreground antialiased min-h-screen bg-noise")}>
         {children}
       </body>
     </html>
