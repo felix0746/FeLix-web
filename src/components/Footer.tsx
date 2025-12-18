@@ -9,7 +9,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="py-12 md:py-20 border-t border-white/[0.03] bg-[#020202] relative overflow-hidden">
+        <footer className="py-12 md:py-20 border-t border-white/[0.03] bg-background relative overflow-hidden">
             {/* Subtle Ambient Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
             <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-64 bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />

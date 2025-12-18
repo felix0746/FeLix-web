@@ -37,23 +37,27 @@ export default function Solutions() {
             <div className="absolute top-1/2 left-[-10%] w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none mix-blend-screen" />
             <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
+            {/* Transition Masks */}
+            <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-background via-background/60 to-transparent pointer-events-none z-0" />
+            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none z-0" />
+
             <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -15 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.5 }}
                     >
                         <h2 className="text-3xl md:text-5xl font-extrabold mb-8 text-white tracking-widest font-heading uppercase">
                             <span className="text-gradient-platinum">Marketing</span>
                             <br />
                             Automation
                         </h2>
-                        <p className="text-gray-400 text-lg mb-10 leading-relaxed font-light tracking-wide">
-                            無論您是<span className="text-gray-200 font-medium">美容師</span>、<span className="text-gray-200 font-medium">音樂老師</span>或<span className="text-gray-200 font-medium">個人創作者</span>。
+                        <p className="text-gray-400 text-lg mb-10 leading-relaxed font-light tracking-wide text-balance">
+                            無論您是<span className="text-gray-200 font-medium">美容師</span>、<span className="text-gray-200 font-medium">音樂老師</span>或<span className="text-gray-200 font-medium inline-block whitespace-nowrap">個人創作者</span>。
                             <br /><br />
-                            我們為您打造一位 <span className="text-white font-normal underline decoration-white/30 underline-offset-4">24小時待命的數位管家</span>。
+                            我們為您打造一位 <span className="text-white font-normal underline decoration-white/30 underline-offset-4 inline-block whitespace-nowrap">24小時待命的數位管家</span>。
                             讓預約自動成交，把寶貴的時間留給您最熱愛的創作與服務。
                         </p>
 

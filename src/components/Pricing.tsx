@@ -56,6 +56,10 @@ export default function Pricing() {
             <div className="absolute top-1/2 left-[-10%] w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none mix-blend-screen" />
             <div className="absolute bottom-0 right-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
+            {/* Transition Masks */}
+            <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-background via-background/80 to-transparent pointer-events-none z-0" />
+            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-0" />
+
             <div className="container mx-auto px-6 md:px-8 relative z-10">
                 <div className="text-center mb-20">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-white tracking-widest font-heading uppercase">
@@ -70,10 +74,10 @@ export default function Pricing() {
                     {plans.map((plan, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.6 }}
+                            transition={{ delay: i * 0.05, duration: 0.5 }}
                             className={`relative flex flex-col transition-all duration-500 overflow-visible ${plan.highlight
                                 ? "md:scale-110 z-10"
                                 : ""

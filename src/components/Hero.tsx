@@ -14,6 +14,9 @@ export default function Hero() {
             <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen animate-pulse-slow" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
+            {/* Seamless Transition Overlay */}
+            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-0" />
+
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -30,14 +33,14 @@ export default function Hero() {
                         <span className="tracking-widest uppercase text-xs font-bold text-gray-300 font-heading">Available for Projects</span>
                     </div>
 
-                    <h1 className="hero-title-premium mb-8 text-white font-heading font-black">
+                    <h1 className="hero-title-premium mb-8 text-white font-heading font-black text-balance">
                         WEB DESIGN <span className="text-gradient-platinum mx-4 font-black">&</span> STRATEGY
                         <span className="block mt-4 text-gradient-platinum pb-2 tracking-[0.05em] normal-case font-black">
                             打造自動獲客的數位店面
                         </span>
                     </h1>
 
-                    <p className="hero-subtitle-premium mb-14 max-w-2xl mx-auto leading-relaxed text-slate-400 font-light font-sans tracking-wide">
+                    <p className="hero-subtitle-premium mb-14 max-w-2xl mx-auto leading-relaxed text-slate-400 font-light font-sans tracking-wide text-balance">
                         從精緻的企業形象，到全自動的商業系統。<br className="hidden md:block" />
                         我們將流量轉化為實際訂單，提供極致的數位解決方案。
                     </p>
@@ -69,9 +72,9 @@ export default function Hero() {
                     ].map((item, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6 + index * 0.15, duration: 0.8 }}
+                            transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
                             className="glass-panel-premium p-8 rounded-2xl text-left group relative overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:-translate-y-1"
                         >
                             {/* Soft Gradient Blob on Hover */}

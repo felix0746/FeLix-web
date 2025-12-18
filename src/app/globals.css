@@ -41,7 +41,7 @@
       深邃太空黑 (Deep Space Black)
       極致純粹的黑，強調對比
     */
-    --background: 220 10% 4%;
+    --background: 0 0% 0%;
     --foreground: 210 20% 98%;
 
     --card: 220 10% 6%;
@@ -167,16 +167,26 @@
   邊框帶有微弱的流動光澤
 */
 .glass-panel-premium {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  /* 稍微亮一點的邊框 */
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow:
     0 4px 30px rgba(0, 0, 0, 0.5),
     inset 0 0 0 1px rgba(255, 255, 255, 0.02);
   position: relative;
   overflow: hidden;
+  /* Performance Optimization */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Reduce blur on mobile for performance */
+@media (max-width: 768px) {
+  .glass-panel-premium {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 /* 靜態邊框高光 */
@@ -260,6 +270,9 @@
       #cbd5e1 100%);
   background-size: 200% auto;
   animation: shimmer 4s linear infinite;
+  /* Performance Optimization */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .btn-premium::before {

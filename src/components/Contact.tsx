@@ -6,6 +6,8 @@ import { Mail, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
 export default function Contact() {
     return (
         <section id="contact" className="py-20 md:py-32 relative scroll-mt-24 md:scroll-mt-32 overflow-hidden">
+            {/* Top Transition Mask */}
+            <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-background via-background/60 to-transparent pointer-events-none z-0" />
             <div className="container mx-auto px-6">
                 <div className="rounded-[2.5rem] relative overflow-hidden text-center glass-panel-premium p-8 md:p-24 border-white/20 shadow-[0_0_80px_rgba(79,70,229,0.15)]">
 
@@ -31,10 +33,10 @@ export default function Contact() {
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1 }}
+                        transition={{ duration: 0.6 }}
                         className="relative z-10 max-w-3xl mx-auto"
                     >
                         <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 tracking-widest font-heading uppercase leading-tight">
@@ -42,7 +44,7 @@ export default function Contact() {
                             <br />
                             <span className="text-gradient-platinum">PROJECT</span>
                         </h2>
-                        <p className="text-lg md:text-xl text-gray-400 mb-14 font-light leading-relaxed max-w-2xl mx-auto">
+                        <p className="text-lg md:text-xl text-gray-400 mb-14 font-light leading-relaxed max-w-2xl mx-auto text-balance">
                             無論您有具體的想法，或是還在構思階段，都歡迎與我們聯繫。<br className="hidden md:block" />
                             讓 FeLix 協助您，將創意轉化為帶動業務的數位精品。
                         </p>
@@ -79,6 +81,6 @@ export default function Contact() {
                     </motion.div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
