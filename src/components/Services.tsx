@@ -44,8 +44,8 @@ export default function Services() {
             <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
             {/* Seamless Transition Masks */}
-            <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-background via-background/50 to-transparent pointer-events-none z-0" />
-            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/50 to-transparent pointer-events-none z-0" />
+            <div className="absolute top-0 left-0 w-full h-64 md:h-64 bg-gradient-to-b from-background via-background/90 md:via-background/50 to-transparent pointer-events-none z-0" />
+            <div className="absolute bottom-0 left-0 w-full h-64 md:h-64 bg-gradient-to-t from-background via-background/90 md:via-background/50 to-transparent pointer-events-none z-0" />
             <div className="container mx-auto px-6">
                 <div className="text-center mb-20">
                     <h2 className="hero-title-premium text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-white tracking-widest font-heading uppercase">
@@ -64,7 +64,7 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.05, duration: 0.5 }}
-                            className={`glass-panel-premium p-8 rounded-2xl group hover:border-white/20 transition-all duration-500 overflow-hidden ${file.className} relative`}
+                            className={`glass-panel-premium p-6 md:p-8 rounded-2xl group hover:border-white/20 transition-all duration-500 overflow-hidden ${file.className} relative`}
                         >
                             {/* Decorative Background Icon - Blueprint Style */}
                             <div className="absolute -right-12 -bottom-12 opacity-[0.05] group-hover:opacity-[0.1] transition-all duration-500 pointer-events-none grayscale">

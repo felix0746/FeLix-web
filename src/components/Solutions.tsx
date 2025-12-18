@@ -38,8 +38,8 @@ export default function Solutions() {
             <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
             {/* Transition Masks */}
-            <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-background via-background/60 to-transparent pointer-events-none z-0" />
-            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none z-0" />
+            <div className="absolute top-0 left-0 w-full h-64 md:h-64 bg-gradient-to-b from-background via-background/90 md:via-background/60 to-transparent pointer-events-none z-0" />
+            <div className="absolute bottom-0 left-0 w-full h-64 md:h-64 bg-gradient-to-t from-background via-background/90 md:via-background/60 to-transparent pointer-events-none z-0" />
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2">
@@ -75,7 +75,7 @@ export default function Solutions() {
                 </div>
 
                 <div className="md:w-1/2 w-full">
-                    <div className="glass-panel-premium rounded-3xl border border-white/10 overflow-hidden relative shadow-2xl shadow-indigo-500/10">
+                    <div className="glass-panel-premium rounded-3xl border border-white/5 md:border-white/10 overflow-hidden relative shadow-2xl shadow-indigo-500/10">
                         {/* Soft Gradient Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-purple-500/5"></div>
 

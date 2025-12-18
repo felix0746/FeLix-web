@@ -181,11 +181,16 @@
   transform: translateZ(0);
 }
 
-/* Reduce blur on mobile for performance */
+/* Reduce blur on mobile for performance and soften color contrast */
 @media (max-width: 768px) {
   .glass-panel-premium {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 2px 15px rgba(0, 0, 0, 0.3),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.01);
   }
 }
 

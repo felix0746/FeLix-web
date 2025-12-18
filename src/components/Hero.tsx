@@ -15,7 +15,7 @@ export default function Hero() {
             <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
             {/* Seamless Transition Overlay */}
-            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-0" />
+            <div className="absolute bottom-0 left-0 w-full h-64 md:h-64 bg-gradient-to-t from-background via-background/90 md:via-background/80 to-transparent pointer-events-none z-0" />
 
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <motion.div
@@ -75,7 +75,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                            className="glass-panel-premium p-8 rounded-2xl text-left group relative overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:-translate-y-1"
+                            className="glass-panel-premium p-6 md:p-8 rounded-2xl text-left group relative overflow-hidden border border-white/3 md:border-white/5 hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:-translate-y-1"
                         >
                             {/* Soft Gradient Blob on Hover */}
                             <div className="absolute -right-10 -top-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>

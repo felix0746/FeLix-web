@@ -57,8 +57,8 @@ export default function Pricing() {
             <div className="absolute bottom-0 right-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
             {/* Transition Masks */}
-            <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-background via-background/80 to-transparent pointer-events-none z-0" />
-            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-0" />
+            <div className="absolute top-0 left-0 w-full h-64 md:h-64 bg-gradient-to-b from-background via-background/90 md:via-background/80 to-transparent pointer-events-none z-0" />
+            <div className="absolute bottom-0 left-0 w-full h-64 md:h-64 bg-gradient-to-t from-background via-background/90 md:via-background/80 to-transparent pointer-events-none z-0" />
 
             <div className="container mx-auto px-6 md:px-8 relative z-10">
                 <div className="text-center mb-20">
@@ -101,7 +101,7 @@ export default function Pricing() {
 
                             <div className={`h-full p-6 md:p-10 rounded-3xl border flex flex-col transition-all duration-500 ${plan.highlight
                                 ? "glass-panel-premium border-white/20 shadow-[0_20px_50px_rgba(79,70,229,0.2)]"
-                                : "bg-white/[0.03] border-white/5 hover:border-white/10 hover:bg-white/[0.05] text-gray-400"
+                                : "bg-white/[0.02] md:bg-white/[0.03] border-white/3 md:border-white/5 hover:border-white/10 hover:bg-white/[0.05] text-gray-400"
                                 }`}
                             >
                                 <h3 className={`text-xl font-heading mb-3 uppercase tracking-wider ${plan.highlight ? "text-gradient-platinum font-bold" : "text-gray-300 font-medium"}`}>

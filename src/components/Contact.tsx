@@ -7,9 +7,9 @@ export default function Contact() {
     return (
         <section id="contact" className="py-20 md:py-32 relative scroll-mt-24 md:scroll-mt-32 overflow-hidden">
             {/* Top Transition Mask */}
-            <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-background via-background/60 to-transparent pointer-events-none z-0" />
+            <div className="absolute top-0 left-0 w-full h-64 md:h-64 bg-gradient-to-b from-background via-background/90 md:via-background/60 to-transparent pointer-events-none z-0" />
             <div className="container mx-auto px-6">
-                <div className="rounded-[2.5rem] relative overflow-hidden text-center glass-panel-premium p-8 md:p-24 border-white/20 shadow-[0_0_80px_rgba(79,70,229,0.15)]">
+                <div className="rounded-[2.5rem] relative overflow-hidden text-center glass-panel-premium p-6 md:p-24 border-white/10 md:border-white/20 shadow-[0_0_80px_rgba(79,70,229,0.15)]">
 
                     {/* Platinum & Indigo Ambient Glows - Intensified */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen opacity-50" />
